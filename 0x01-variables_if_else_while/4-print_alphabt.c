@@ -1,4 +1,4 @@
-#include <stdoi.h>
+#include <stdio.h>
 
 /**
  * main - print alphabet in new line.
