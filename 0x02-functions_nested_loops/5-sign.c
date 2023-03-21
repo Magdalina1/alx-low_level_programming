@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * print_sing - of number.
+ * print_sign - of number.
  * @n: the number to be checked.
  * Return: 1 for positive , 0 for zero , -1 for nagative.
  */
 
-int print_sing(int n)
+int print_sign(int n)
 {
 	if (n > 0)
 	{
