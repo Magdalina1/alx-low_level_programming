@@ -1,9 +1,8 @@
 #include "main.h"
-
 /**
- * print_line - draws a straight line in the terminal.
- * @n: n is  nembers
- */
+  * print_line - Draws a straight line according to parameter
+  * @n: The number of lines to draw
+  */
 
 void print_line(int n)
 {
