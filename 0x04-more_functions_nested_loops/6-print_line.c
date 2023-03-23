@@ -2,6 +2,7 @@
 
 /**
  * print_line - draws a straight line in the terminal.
+ * @n: n nembers
  */
 
 void print_line(int n)
