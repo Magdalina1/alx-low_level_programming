@@ -19,7 +19,7 @@ int main(void)
 		key[i] = (rand() % 94) + 33;
 
 	key[9] = '\0';
-	printf("%s\n, key);
+	printf("%s\n", key);
 
 	return (0);
 }
