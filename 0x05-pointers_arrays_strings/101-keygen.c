@@ -9,16 +9,16 @@
 
 int main(void)
 {
-	char password[10];
+	char password[16];
 	int i;
 
 	srand(time(NULL));
 
-	for (i = 0; i < 10; i++)
-		password[i] = (rand() % 94) + 33;
+	for (i = 0; i < 15; i++)
+		password[i] = rand() % 94 + 33;
 
-	password[9] = '\0';
-	printf("password: %s\n", password);
+	password[15] = '\0';
+	printf("tada! congrats: %s\n", password);
 
 	return (0);
 }
