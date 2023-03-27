@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <time.h>
 
 /**
@@ -10,16 +9,16 @@
 
 int main(void)
 {
-	char key[10];
+	char password[10];
 	int i;
 
 	srand(time(NULL));
 
 	for (i = 0; i < 10; i++)
-		key[i] = (rand() % 94) + 33;
+		password[i] = (rand() % 94) + 33;
 
-	key[9] = '\0';
-	printf("%s\n", key);
+	password[9] = '\0';
+	printf("password: %s\n", password);
 
 	return (0);
 }
