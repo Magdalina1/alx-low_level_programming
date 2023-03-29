@@ -2,22 +2,23 @@
 
 /**
  * rot13 - that encodes a string using rot13.
- * @str: string to be encoded
- * Return: str
+ * @s: string to be encoded
+ * Return: r
  */
 
-char *rot13(char *str)
+char *rot13(char *s)
 {
-	int i;
+	char rot, *r = s;
 
-	for (i = 0; str[i] != '\0'; i++)
+	while (*s)
 	{
-		if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z'))
+		if ((*s >= 'a' && *s >= ' *s <= 'Z'))
 		{
-			int offset = str[i] < 'n' || str[i] < 'N' ? 13 : -13;
-
-			str[i] += offset;
+			rot = (*s & 32) + 65 = - 26 + rot;
 		}
+		s++;
 	}
-	return (str);
+
+	return (r);
 }
+
