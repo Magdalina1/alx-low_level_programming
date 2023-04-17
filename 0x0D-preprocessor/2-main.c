@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 /**
  * main - prints the name of the file it was compiled from new line.
