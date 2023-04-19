@@ -5,10 +5,11 @@
 /**
  * print_name - prints a name.
  * @name: name of person
- * @f: fonction
+ * @f: function
  */
 
 void print_name(char *name, void (*f)(char *))
 {
-	f(name);
+	if (name != NULL && f != NULL)
+		f(name);
 }
