@@ -12,6 +12,8 @@ int main(int argc, char *argv[])
 {
 	int num_bytes;
 	int offset;
+	int (*adress)(int, char **) = main;
+	unsigned char m;
 
 	if (argc != 2)
 	{
@@ -19,17 +21,22 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 	num_bytes = atoi(argv[1]);
-	offset = 0;
 
-	if (num_bytes < 0)
+	if (num_bytes <= 0)
 	{
 		printf("Error\n");
 		exit(2);
 	}
-	while (offset < num_bytes)
+
+	for (offset = 0; offset < num_bytes; offset++)
 	{
-		printf("%02x", *(unsigned char *)((void *)main + offset));
-		offset++;
+		m = *(unsigned char *)adress;
+		printf("%02x", m);
+
+		if (offset == num_bytes - 1)
+			continue;
+		printf(" ");
+		adress++;
 	}
 	printf("\n");
 
