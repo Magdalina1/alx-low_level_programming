@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "lists.h"
+#include <stddef.h>
 
 /**
  * print_list -  prints all the elements of a list_t list.
