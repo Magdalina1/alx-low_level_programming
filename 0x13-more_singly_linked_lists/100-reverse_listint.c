@@ -11,7 +11,7 @@ listint_t *reverse_listint(listint_t **head)
 	listint_t *prev_node;
 	listint_t *next_node;
 
-	if (!head || !*head || !(*head)->next)
+	if (!head || !*head)
 		return (NULL);
 
 	prev_node = NULL;
