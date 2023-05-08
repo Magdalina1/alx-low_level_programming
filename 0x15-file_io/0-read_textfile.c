@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
+#include <unistd.h>
+#include <fcntl.h>
+#include <errno.h>
 
 /**
  * read_textfile - reads a text file and prints
@@ -13,44 +16,44 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	FILE *fp;
+	ssize_t nbytes;
 	char *buffer;
-	size_t bytes_read;
+	int fd;
 
 	if (filename == NULL)
 	{
 		return (0);
 	}
 
-	fp = fopen(filename, "r");
+	fd = open(filename, O_RDONLY);
 
-	if (fp == NULL)
+	if (fd == -1)
 	{
 		return (0);
 	}
 
-	buffer = malloc(letters + 1);
+	buffer = (char *) malloc((letters + 1) * sizeof(char));
 
 	if (buffer == NULL)
 	{
-		fclose(fp);
+		close(fd);
 		return (0);
 	}
 
-	bytes_read = fread(buffer, 1, letters, fp);
+	nbytes = read(fd, buffer, letters);
 
-	if (bytes_read < letters && ferror(fp) != 0)
+	close(fd);
+	if (nbytes == -1)
 	{
 		free(buffer);
-		fclose(fp);
 		return (0);
 	}
-	buffer[bytes_read] = '\0';
-	printf("%s", buffer);
+
+	buffer[nbytes] = '\0';
+	nbytes = write(STDOUT_FILENO, buffer, nbytes);
 
 	free(buffer);
-	fclose(fp);
 
-	return (bytes_read);
+	return (nbytes);
 }
 
