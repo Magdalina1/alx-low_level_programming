@@ -1,5 +1,7 @@
-include "main.h"
-
+#include "main.h"
+#include <string.h>
+#include <stddef.h>
+#include <stdlib.h>
 /**
  * allocate_buffer - Allocates 1024 bytes for a buffer.
  * @filename: The name of the file buffer is storing chars for.
