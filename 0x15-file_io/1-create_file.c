@@ -4,6 +4,23 @@
 #include <string.h>
 #include "main.h"
 
+
+/**
+ * _strlen - returns the length of a string.
+ * @s: the string to measure.
+ * Return: the length of s.
+ */
+
+size_t _strlen(char *s)
+{
+	size_t len = 0;
+
+	while (*s++)
+		len++;
+
+	return (len);
+}
+
 /**
  * create_file - Create a function that creates a file.
  * @filename: the name of the file to read.
