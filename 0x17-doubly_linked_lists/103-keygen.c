@@ -1,48 +1,53 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 /**
- * generate_key - generates a valid key for crackme5
- * @username: the username to generate a key for
- * This function calculates the sum of the ASCII values of the username,
- * then XORs it with 0x55 and ANDs it with 0xff to get a one-byte key.
- * It prints the key as a string to the standard output.
+ * main - Generates and prints passwords for the crackme5 executable.
+ * @argc: The number of arguments supplied to the program.
+ * @argv: An array of pointers to the arguments.
+ *
+ * Return: Always 0.
  */
-
-void generate_key(char *username)
+int main(int __attribute__((__unused__)) argc, char *argv[])
 {
-	int key;
-	int i;
-	int sum = 0;
+	char password[7], *codex;
+	int len = strlen(argv[1]), i, tmp;
 
-	for (i = 0; i < strlen(username); i++)
+	codex = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
+
+	tmp = (len ^ 59) & 63;
+	password[0] = codex[tmp];
+
+	tmp = 0;
+	for (i = 0; i < len; i++)
+		tmp += argv[1][i];
+	password[1] = codex[(tmp ^ 79) & 63];
+
+	tmp = 1;
+	for (i = 0; i < len; i++)
+		tmp *= argv[1][i];
+	password[2] = codex[(tmp ^ 85) & 63];
+
+	tmp = 0;
+	for (i = 0; i < len; i++)
 	{
-		sum += username[i];
+		if (argv[1][i] > tmp)
+			tmp = argv[1][i];
 	}
+	srand(tmp ^ 14);
+	password[3] = codex[rand() & 63];
 
-	key = (sum ^ 0x55) & 0xff;
-	printf("%s\n", &key);
-}
+	tmp = 0;
+	for (i = 0; i < len; i++)
+		tmp += (argv[1][i] * argv[1][i]);
+	password[4] = codex[(tmp ^ 239) & 63];
 
-/**
- * main - entry point for the keygen program
- * @argc: number of arguments
- * @argv: array of arguments
- * Return: 0 on success, 1 on error
- * This function checks if number of arguments is 2, then calls generate_key
- * with second argument as the username. If the number of arguments is not 2,
- * it prints a usage message and returns 1.
- */
+	for (i = 0; i < argv[1][0]; i++)
+		tmp = rand();
+	password[5] = codex[(tmp ^ 229) & 63];
 
-int main(int argc, char **argv)
-{
-	if (argc != 2)
-	{
-		printf("Usage: ./keygen5 username\n");
-		return (1);
-	}
-	generate_key(argv[1]);
-
+	password[6] = '\0';
+	printf("%s", password);
 	return (0);
 }
-
