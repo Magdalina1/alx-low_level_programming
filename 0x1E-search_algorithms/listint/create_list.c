@@ -44,7 +44,7 @@ skiplist_t *create_skiplist(int *array, size_t size)
 		node = malloc(sizeof(*node));
 		if (!node)
 		{
-			free_skiplist(list);
+			create_skiplist(list);
 			return (NULL);
 		}
 		node->n = array[size];
